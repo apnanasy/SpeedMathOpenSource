@@ -7,7 +7,7 @@
     tools:context=".SpeedMathActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/equationText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
