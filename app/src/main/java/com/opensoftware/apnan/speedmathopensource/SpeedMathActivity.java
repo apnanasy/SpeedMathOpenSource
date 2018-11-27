@@ -29,14 +29,21 @@ public class SpeedMathActivity extends AppCompatActivity {
                 boolean handled = false;
                 if (actionId == EditorInfo.IME_ACTION_DONE ||
                         (event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
-                   // sendMessage();
-                    equationTV.setText(creator.getEquation());
+                   checkAnswer();
                     handled = true;
                 }
                 return handled;
             }
         });
 
+    }
+
+    private void checkAnswer()
+    {
+        if(creator.checkEquation(Integer.parseInt(answerET.getText().toString())))
+        {
+            correctTV.setText("Great!!!");
+        }
     }
 
 
