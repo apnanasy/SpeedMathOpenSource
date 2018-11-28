@@ -35,6 +35,7 @@ public class SpeedMathActivity extends AppCompatActivity {
                 return handled;
             }
         });
+        equationTV.setText(creator.getEquation());
 
     }
 
@@ -43,6 +44,7 @@ public class SpeedMathActivity extends AppCompatActivity {
         if(creator.checkEquation(Integer.parseInt(answerET.getText().toString())))
         {
             correctTV.setText("Great!!!");
+            equationTV.setText(creator.getEquation());
         }
     }
 
