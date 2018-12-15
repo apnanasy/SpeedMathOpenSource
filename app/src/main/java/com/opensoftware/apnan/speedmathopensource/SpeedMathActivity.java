@@ -11,7 +11,8 @@ import android.widget.TextView;
 public class SpeedMathActivity extends AppCompatActivity {
     private TextView equationTV, correctTV,wrongTV;
     private EditText answerET;
-    private RandMath creator;
+    private Game creator;
+    private int tries = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,7 @@ public class SpeedMathActivity extends AppCompatActivity {
         correctTV = findViewById(R.id.correctText);
         wrongTV = findViewById(R.id.wrongText);
         answerET = findViewById(R.id.answerEdit);
-        creator = new RandMath();
+        creator = new Game();
 
         answerET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -41,10 +42,15 @@ public class SpeedMathActivity extends AppCompatActivity {
 
     private void checkAnswer()
     {
-        if(creator.checkEquation(Integer.parseInt(answerET.getText().toString())))
+        if(creator.checkEquation(Integer.parseInt(answerET.getText().toString())) || tries > 3)
         {
             correctTV.setText("Great!!!");
             equationTV.setText(creator.getEquation());
+            answerET.setText("");
+            tries = 0;
+        } else {
+            tries++;
+            correctTV.setText("Not Good!!!");
         }
     }
 
