@@ -42,15 +42,13 @@ public class SpeedMathActivity extends AppCompatActivity {
 
     private void checkAnswer()
     {
-        if(creator.checkEquation(Integer.parseInt(answerET.getText().toString())) || tries > 3)
+        if(creator.checkEquation(Integer.parseInt(answerET.getText().toString())))
         {
             correctTV.setText("Great!!!");
             equationTV.setText(creator.getEquation());
             answerET.setText("");
-            tries = 0;
         } else {
-            tries++;
-            correctTV.setText("Not Good!!!");
+            correctTV.setText(creator.getScore());
         }
     }
 
