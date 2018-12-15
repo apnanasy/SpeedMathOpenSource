@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SpeedMath(OpenSource)</string>
+    <string name="title_activity_new_custom_game">NewCustomGameActivity</string>
 </resources>
