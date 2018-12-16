@@ -12,5 +12,6 @@
         android:layout_height="wrap_content"
         android:text="New Custom Single"
         tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="146dp" />
+        tools:layout_editor_absoluteY="146dp"
+        />
 </android.support.constraint.ConstraintLayout>

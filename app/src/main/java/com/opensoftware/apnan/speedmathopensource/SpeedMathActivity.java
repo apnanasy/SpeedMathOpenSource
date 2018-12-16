@@ -1,5 +1,6 @@
 package com.opensoftware.apnan.speedmathopensource;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -22,7 +23,10 @@ public class SpeedMathActivity extends AppCompatActivity {
         correctTV = findViewById(R.id.correctText);
         wrongTV = findViewById(R.id.wrongText);
         answerET = findViewById(R.id.answerEdit);
-        creator = new Game();
+        Intent intent = getIntent();
+        int low = intent.getIntExtra("low",0);
+        int high = intent.getIntExtra("high", 0);
+        creator = new Game(low,high);
 
         answerET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
