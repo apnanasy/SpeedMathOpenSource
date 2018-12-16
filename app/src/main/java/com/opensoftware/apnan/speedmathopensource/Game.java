@@ -7,12 +7,12 @@ public class Game {
 
     private ArrayList<Equation> equations;
     private Score score;
+    private GameCreation creator;
     private int low,high;
 
-    public Game(int low,int high)
+    public Game(GameCreation creator)
     {
-        this.low = low;
-        this.high = high;
+        this.creator = creator;
         equations = new ArrayList<Equation>();
         score = new Score();
         createEquation();
@@ -37,7 +37,7 @@ public class Game {
     private int generateRange()
     {
         Random rand = new Random();
-        return rand.nextInt((high - low) + 1) + low;
+        return rand.nextInt((creator.getHigh() - creator.getLow()) + 1) + creator.getLow();
     }
     private int generateNum(int max)
     {

@@ -24,9 +24,7 @@ public class SpeedMathActivity extends AppCompatActivity {
         wrongTV = findViewById(R.id.wrongText);
         answerET = findViewById(R.id.answerEdit);
         Intent intent = getIntent();
-        int low = intent.getIntExtra("low",0);
-        int high = intent.getIntExtra("high", 0);
-        creator = new Game(low,high);
+        creator = new Game((GameCreation) intent.getParcelableExtra("creation"));
 
         answerET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
