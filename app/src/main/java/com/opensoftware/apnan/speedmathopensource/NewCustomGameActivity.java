@@ -35,7 +35,10 @@ public class NewCustomGameActivity extends AppCompatActivity {
 
     }
     private void checked() {
-        String s = creator.checkGame(Integer.parseInt(lowET.getText().toString()),Integer.parseInt(highET.getText().toString()));
+        int low = Integer.parseInt(lowET.getText().toString());
+        int high = Integer.parseInt(lowET.getText().toString());
+        int amount = Integer.parseInt(lowET.getText().toString());
+        String s = creator.checkGame(low,high,amount);
         if(s == null) {
             Intent intent = new Intent(getBaseContext(), SpeedMathActivity.class);
             intent.putExtra("creation",creator);
@@ -43,12 +46,6 @@ public class NewCustomGameActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getBaseContext(),s,Toast.LENGTH_LONG).show();
         }
-       // if(Integer.parseInt(lowET.getText().toString()) < Integer.parseInt(highET.getText().toString())) {
-        //   Intent intent = new Intent(getBaseContext(), SpeedMathActivity.class);
-        //    intent.putExtra("low",Integer.parseInt(lowET.getText().toString()));
-         //   intent.putExtra("high",Integer.parseInt(highET.getText().toString()));
-          //  startActivity(intent);
-        //}
     }
 
 }

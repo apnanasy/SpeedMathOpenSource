@@ -8,19 +8,18 @@ public class Game {
     private ArrayList<Equation> equations;
     private Score score;
     private GameCreation creator;
-    private int low,high;
 
     public Game(GameCreation creator)
     {
         this.creator = creator;
         equations = new ArrayList<Equation>();
-        score = new Score();
+        score = new Score(creator);
         createEquation();
     }
     private void createEquation()
     {
         int ctr = 0;
-        while(ctr < 50) {
+        while(ctr < creator.getAmount()) {
             equations.add(ctr,new Equation());
             equations.get(ctr).setOperator(generateNum(4));
             do {

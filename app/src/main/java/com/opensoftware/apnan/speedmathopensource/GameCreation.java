@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class GameCreation implements Parcelable {
-    private int low, high;
-    public String checkGame(int low, int high) {
+    private int low, high, amount;
+    public String checkGame(int low, int high, int amount) {
         if(low > high){
             return "Low must be lower than high";
         } else {
@@ -17,6 +17,9 @@ public class GameCreation implements Parcelable {
     }
     public String getLowStr() {
         return Integer.toString(low);
+    }
+    public int getAmount() {
+        return amount;
     }
     public int getLow() {
         return low;
@@ -37,6 +40,7 @@ public class GameCreation implements Parcelable {
     public GameCreation() {
         low = 1; //Default values
         high = 12;//Default Values
+        amount = 10;//default values
     }
 
     @Override
@@ -48,11 +52,13 @@ public class GameCreation implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.low);
         dest.writeInt(this.high);
+        dest.writeInt(this.amount);
     }
 
     protected GameCreation(Parcel in) {
         this.low = in.readInt();
         this.high = in.readInt();
+        this.amount = in.readInt();
     }
 
     public static final Creator<GameCreation> CREATOR = new Creator<GameCreation>() {
