@@ -4,13 +4,16 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 
 public class SpeedMathActivity extends AppCompatActivity {
     private TextView equationTV, correctTV,wrongTV;
+    private Button Bsave;
     private EditText answerET;
     private Game creator;
     private int tries = 0;
@@ -23,8 +26,9 @@ public class SpeedMathActivity extends AppCompatActivity {
         correctTV = findViewById(R.id.correctText);
         wrongTV = findViewById(R.id.wrongText);
         answerET = findViewById(R.id.answerEdit);
+        Bsave = findViewById(R.id.Bsave);
         Intent intent = getIntent();
-        creator = new Game((GameCreation) intent.getParcelableExtra("creation"));
+        creator = new Game((GameCreation) intent.getSerializableExtra("creation"));
 
         answerET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -36,6 +40,15 @@ public class SpeedMathActivity extends AppCompatActivity {
                     handled = true;
                 }
                 return handled;
+            }
+        });
+        Bsave.setOnClickListener(new View.OnClickListener() {
+            @Override
+           public void onClick(View v) {
+                FileController fc = new FileController(getBaseContext());
+                fc.saveGame(creator);
+                Intent intent = new Intent(getBaseContext(), IntroActivity.class);
+                startActivity(intent);
             }
         });
         equationTV.setText(creator.getEquation());

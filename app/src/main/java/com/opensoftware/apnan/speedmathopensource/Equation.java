@@ -3,7 +3,9 @@ package com.opensoftware.apnan.speedmathopensource;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Equation implements Parcelable {
+import java.io.Serializable;
+
+public class Equation implements Serializable {
 
     private int left;
     private int right;
@@ -92,37 +94,5 @@ public void setOperator(int operator)
         return equation;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.left);
-        dest.writeInt(this.right);
-        dest.writeInt(this.operator);
-        dest.writeInt(this.answer);
-        dest.writeString(this.equation);
-    }
-
-    protected Equation(Parcel in) {
-        this.left = in.readInt();
-        this.right = in.readInt();
-        this.operator = in.readInt();
-        this.answer = in.readInt();
-        this.equation = in.readString();
-    }
-
-    public static final Parcelable.Creator<Equation> CREATOR = new Parcelable.Creator<Equation>() {
-        @Override
-        public Equation createFromParcel(Parcel source) {
-            return new Equation(source);
-        }
-
-        @Override
-        public Equation[] newArray(int size) {
-            return new Equation[size];
-        }
-    };
 }

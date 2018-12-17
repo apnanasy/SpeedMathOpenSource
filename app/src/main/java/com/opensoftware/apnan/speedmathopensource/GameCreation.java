@@ -3,7 +3,9 @@ package com.opensoftware.apnan.speedmathopensource;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class GameCreation implements Parcelable {
+import java.io.Serializable;
+
+public class GameCreation implements Serializable {
     private int low, high, amount;
     public String checkGame(int low, int high, int amount) {
         if(low > high){
@@ -43,33 +45,5 @@ public class GameCreation implements Parcelable {
         amount = 10;//default values
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.low);
-        dest.writeInt(this.high);
-        dest.writeInt(this.amount);
-    }
-
-    protected GameCreation(Parcel in) {
-        this.low = in.readInt();
-        this.high = in.readInt();
-        this.amount = in.readInt();
-    }
-
-    public static final Creator<GameCreation> CREATOR = new Creator<GameCreation>() {
-        @Override
-        public GameCreation createFromParcel(Parcel source) {
-            return new GameCreation(source);
-        }
-
-        @Override
-        public GameCreation[] newArray(int size) {
-            return new GameCreation[size];
-        }
-    };
 }

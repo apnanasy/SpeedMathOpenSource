@@ -3,9 +3,10 @@ package com.opensoftware.apnan.speedmathopensource;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Score implements Parcelable {
+public class Score implements Serializable {
     private Equation equate;
     private GameCreation details;
     private ArrayList<Equation> equations;
@@ -44,38 +45,5 @@ public class Score implements Parcelable {
         return equate.getEquation();
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(this.equate, flags);
-        dest.writeParcelable(this.details, flags);
-        dest.writeTypedList(this.equations);
-        dest.writeList(this.tried);
-        dest.writeInt(this.tries);
-    }
-
-    protected Score(Parcel in) {
-        this.equate = in.readParcelable(Equation.class.getClassLoader());
-        this.details = in.readParcelable(GameCreation.class.getClassLoader());
-        this.equations = in.createTypedArrayList(Equation.CREATOR);
-        this.tried = new ArrayList<Integer>();
-        in.readList(this.tried, Integer.class.getClassLoader());
-        this.tries = in.readInt();
-    }
-
-    public static final Parcelable.Creator<Score> CREATOR = new Parcelable.Creator<Score>() {
-        @Override
-        public Score createFromParcel(Parcel source) {
-            return new Score(source);
-        }
-
-        @Override
-        public Score[] newArray(int size) {
-            return new Score[size];
-        }
-    };
 }
