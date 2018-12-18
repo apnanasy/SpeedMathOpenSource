@@ -34,6 +34,7 @@ public class SpeedMathActivity extends AppCompatActivity {
             FileController fc = new FileController(getBaseContext());
             creator = fc.loadGame();
         }
+        correctTV.setText(Integer.toString(creator.getAmount()));
 
         answerET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -64,12 +65,13 @@ public class SpeedMathActivity extends AppCompatActivity {
     {
         if(creator.checkEquation(Integer.parseInt(answerET.getText().toString())))
         {
-            correctTV.setText(Integer.toString(creator.getAmount()));
+            //correctTV.setText(Integer.toString(creator.getAmount()));
             equationTV.setText(creator.getEquation());
             answerET.setText("");
         } else {
-            correctTV.setText(Integer.toString(creator.getAmount()));
+            //correctTV.setText(Integer.toString(creator.getAmount()));
         }
+        correctTV.setText(Integer.toString(creator.getAmount()));
     }
 
 

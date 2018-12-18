@@ -11,14 +11,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Custom Single Game"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="142dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/Bresume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="resume"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="248dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NCSButton"/>
+
+    <Button
+        android:id="@+id/Bscores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="scores"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Bresume"/>
 </android.support.constraint.ConstraintLayout>
