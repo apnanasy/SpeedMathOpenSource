@@ -29,7 +29,7 @@ public class SpeedMathActivity extends AppCompatActivity {
         Bsave = findViewById(R.id.Bsave);
         Intent intent = getIntent();
         if(intent.hasExtra("creation")) {
-            creator = new Game((GameCreation) intent.getSerializableExtra("creation"));
+            creator = new Game((GameCreation) intent.getSerializableExtra("creation"), this);
         } else {
             FileController fc = new FileController(getBaseContext());
             creator = fc.loadGame();

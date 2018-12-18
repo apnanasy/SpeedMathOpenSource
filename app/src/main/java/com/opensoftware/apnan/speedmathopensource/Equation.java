@@ -94,5 +94,8 @@ public void setOperator(int operator)
         return equation;
     }
 
-
+public String toString() {
+    return equation + "=" + Integer.toString(answer);
 }
+}
+
