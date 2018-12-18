@@ -19,6 +19,9 @@ public class Score implements Serializable {
         tried = new ArrayList<Integer>();
         this.details = details;
     }
+    public int getAmount() {
+        return equations.size();
+    }
     public void addEquation(Equation e)
     {
         equate = e;

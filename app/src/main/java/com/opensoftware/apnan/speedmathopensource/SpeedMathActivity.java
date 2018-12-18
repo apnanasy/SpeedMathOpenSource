@@ -28,7 +28,12 @@ public class SpeedMathActivity extends AppCompatActivity {
         answerET = findViewById(R.id.answerEdit);
         Bsave = findViewById(R.id.Bsave);
         Intent intent = getIntent();
-        creator = new Game((GameCreation) intent.getSerializableExtra("creation"));
+        if(intent.hasExtra("creation")) {
+            creator = new Game((GameCreation) intent.getSerializableExtra("creation"));
+        } else {
+            FileController fc = new FileController(getBaseContext());
+            creator = fc.loadGame();
+        }
 
         answerET.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -59,11 +64,11 @@ public class SpeedMathActivity extends AppCompatActivity {
     {
         if(creator.checkEquation(Integer.parseInt(answerET.getText().toString())))
         {
-            correctTV.setText("Great!!!");
+            correctTV.setText(Integer.toString(creator.getAmount()));
             equationTV.setText(creator.getEquation());
             answerET.setText("");
         } else {
-            correctTV.setText(creator.getScore());
+            correctTV.setText(Integer.toString(creator.getAmount()));
         }
     }
 

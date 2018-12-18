@@ -19,6 +19,8 @@ public class Game implements Serializable {
         equations = new ArrayList<Equation>();
         score = new Score(creator);
         createEquation();
+        score.addEquation(equations.get(0));
+        equations.remove(0);
     }
     private void createEquation()
     {
@@ -37,6 +39,9 @@ public class Game implements Serializable {
 
 
     }
+    public int getAmount() {
+        return score.getAmount();
+    }
     private int generateRange()
     {
         Random rand = new Random();
@@ -49,8 +54,8 @@ public class Game implements Serializable {
     }
     public String getEquation()
     {
-        score.addEquation(equations.get(0));
-        equations.remove(0);
+        //score.addEquation(equations.get(0));
+        //equations.remove(0);
         return score.getEquationString();
     }
     public String getScore()
@@ -61,6 +66,8 @@ public class Game implements Serializable {
     {
         if(score.attempt(answer))
         {
+            score.addEquation(equations.get(0));
+            equations.remove(0);
             return true;
         } else {
             return false;
