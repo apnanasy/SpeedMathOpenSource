@@ -9,17 +9,17 @@ import java.util.ArrayList;
 public class Score implements Serializable {
     private Equation equate;
     private GameCreation details;
-    private ArrayList<Equation> equations;
-    private ArrayList<Integer> tried;
+    private ArrayList<ScoredEquation> equations;
+    //private ArrayList<Integer> tried;
     private int tries;
     public Score(GameCreation details)
     {
         tries = 0;
-        equations = new ArrayList<Equation>();
-        tried = new ArrayList<Integer>();
+        equations = new ArrayList<ScoredEquation>();
+        //tried = new ArrayList<Integer>();
         this.details = details;
     }
-    public ArrayList<Equation> getEquations() {
+    public ArrayList<ScoredEquation> getEquations() {
         return equations;
     }
     public int getAmount() {
@@ -35,8 +35,9 @@ public class Score implements Serializable {
         tries++;
         if(answer == equate.getAnswer())
         {
-            equations.add(equate);
-            tried.add(tries);
+            ScoredEquation done = new ScoredEquation(equate,tries);
+            equations.add(done);
+            //tried.add(tries);
             return true;
         } else {
             return false;
