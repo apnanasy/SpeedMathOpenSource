@@ -37,4 +37,28 @@ public class FileController {
         return null;
 
     }
+    public AllScores loadScores() {
+        AllScores scores;
+        try {
+            FileInputStream fis = context.openFileInput("allGames");
+            ObjectInputStream is = new ObjectInputStream(fis);
+            scores = (AllScores) is.readObject();
+            is.close();
+            return scores;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return new AllScores();
+    }
+    public void saveScores(AllScores scores) {
+        try {
+            FileOutputStream fos = context.openFileOutput("allGames", Context.MODE_PRIVATE);
+            ObjectOutputStream os = new ObjectOutputStream(fos);
+            os.writeObject(scores);
+            os.close();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

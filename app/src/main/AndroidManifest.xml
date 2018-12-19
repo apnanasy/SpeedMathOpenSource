@@ -26,7 +26,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.opensoftware.apnan.speedmathopensource.IntroActivity" />
         </activity>
-        <activity android:name=".ScoreActivity"></activity>
+        <activity android:name=".ScoreActivity" />
+        <activity android:name=".AllScoresActivity"></activity>
     </application>
 
 </manifest>

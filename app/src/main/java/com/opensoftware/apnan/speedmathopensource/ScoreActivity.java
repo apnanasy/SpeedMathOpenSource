@@ -26,6 +26,11 @@ public class ScoreActivity extends AppCompatActivity {
             tvTries.setText(Integer.toString(score.getTries()));
             ArrayAdapter<ScoredEquation> arrayAdapter = new ArrayAdapter<ScoredEquation>(this,android.R.layout.simple_list_item_1,score.getEquations());
             LVequations.setAdapter(arrayAdapter);
+            FileController fc = new FileController(getBaseContext());
+            AllScores scores = fc.loadScores();
+            scores.addScore(score);
+            fc.saveScores(scores);
+
         }
     }
 }
