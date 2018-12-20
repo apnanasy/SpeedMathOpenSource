@@ -20,6 +20,13 @@ public class AllScores implements Serializable {
         }
         return Integer.toString(total);
     }
+    public String getEquationCount() {
+        int total = 0;
+        for(Score score: completed) {
+            total += score.getAmount();
+        }
+        return Integer.toString(total);
+    }
     public int getAmount() {
         return completed.size();
     }

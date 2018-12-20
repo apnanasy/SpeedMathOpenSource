@@ -5,17 +5,20 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class AllScoresActivity extends AppCompatActivity {
-    private TextView TVtotal;
+    private TextView TVtotal, TVequations, TVAttempts;
     AllScores scores;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_scores);
         TVtotal = findViewById(R.id.TVtotal);
+        TVequations = findViewById(R.id.TVequations);
+        TVAttempts = findViewById(R.id.TVattempts);
         FileController fc = new FileController(getBaseContext());
         scores = fc.loadScores();
-        TVtotal.setText(Integer.toString(scores.getAmount()));
-
+        TVtotal.setText("Total Games: " + Integer.toString(scores.getAmount()));
+        TVequations.setText("Total Equations: " + scores.getEquationCount());
+        TVAttempts.setText("Total Tries:" + scores.getQuestionAmount());
     }
 
 }
