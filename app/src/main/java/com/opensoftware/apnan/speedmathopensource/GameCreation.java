@@ -11,6 +11,9 @@ public class GameCreation implements Serializable {
         if(low > high){
             return "Low must be lower than high";
         } else {
+            this.low = low;
+            this.high = high;
+            this.amount = amount;
             return null;
         }
     }
@@ -37,6 +40,10 @@ public class GameCreation implements Serializable {
 
     public void setHigh(int high) {
         this.high = high;
+    }
+
+    public String getAmountStr() {
+        return Integer.toString(amount);
     }
 
     public GameCreation() {

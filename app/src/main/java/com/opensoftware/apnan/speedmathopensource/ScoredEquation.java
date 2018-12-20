@@ -11,6 +11,6 @@ public class ScoredEquation implements Serializable {
         equation = eq;
     }
     public String toString() {
-        return equation.toString() + "Attempts: " + Integer.toString(tries);
+        return equation.toString() + " Attempts: " + Integer.toString(tries);
     }
 }

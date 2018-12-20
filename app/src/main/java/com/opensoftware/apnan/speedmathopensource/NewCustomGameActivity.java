@@ -2,10 +2,7 @@ package com.opensoftware.apnan.speedmathopensource;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +10,7 @@ import android.widget.Toast;
 
 public class NewCustomGameActivity extends AppCompatActivity {
     private Button createB;
-    private EditText lowET, highET;
+    private EditText lowET, highET, amountET;
     private GameCreation creator;
 
     @Override
@@ -24,8 +21,10 @@ public class NewCustomGameActivity extends AppCompatActivity {
         createB = findViewById(R.id.Bcreate);
         lowET = findViewById(R.id.ETlow);
         highET = findViewById(R.id.EThigh);
+        amountET = findViewById(R.id.ETamount);
         lowET.setText(creator.getLowStr());
         highET.setText(creator.getHighStr());
+        amountET.setText(creator.getAmountStr());
         createB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,8 +35,8 @@ public class NewCustomGameActivity extends AppCompatActivity {
     }
     private void checked() {
         int low = Integer.parseInt(lowET.getText().toString());
-        int high = Integer.parseInt(lowET.getText().toString());
-        int amount = Integer.parseInt(lowET.getText().toString());
+        int high = Integer.parseInt(highET.getText().toString());
+        int amount = Integer.parseInt(amountET.getText().toString());
         String s = creator.checkGame(low,high,amount);
         if(s == null) {
             Intent intent = new Intent(getBaseContext(), SpeedMathActivity.class);

@@ -31,12 +31,21 @@
         android:inputType="number"
         app:layout_constraintTop_toBottomOf="@+id/ETlow"/>
 
+    <EditText
+        android:id="@+id/ETamount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="amount"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/EThigh"/>
+
     <Button
         android:id="@+id/Bcreate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Create Game!"
         tools:text="Create Game!"
-        app:layout_constraintTop_toBottomOf="@+id/EThigh"/>
+        app:layout_constraintTop_toBottomOf="@+id/ETamount"/>
 
 </android.support.constraint.ConstraintLayout>

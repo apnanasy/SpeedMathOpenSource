@@ -13,6 +13,13 @@ public class AllScores implements Serializable {
     public void addScore(Score score) {
         completed.add(score);
     }
+    public String getQuestionAmount() {
+        int total = 0;
+        for(Score score: completed) {
+            total += score.getOverallTries();
+        }
+        return Integer.toString(total);
+    }
     public int getAmount() {
         return completed.size();
     }
