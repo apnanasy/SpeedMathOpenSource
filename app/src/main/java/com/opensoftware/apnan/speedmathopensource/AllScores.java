@@ -48,4 +48,8 @@ public class AllScores implements Serializable {
     public int getAmount() {
         return completed.size();
     }
+
+    public ArrayList<Score> getCompleted() {
+        return completed;
+    }
 }

@@ -31,4 +31,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TVequations"/>
+
+    <ListView
+        android:id="@+id/LVmatches"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        app:layout_constraintTop_toBottomOf="@+id/TVattempts">
+
+
+    </ListView>
 </android.support.constraint.ConstraintLayout>
