@@ -33,6 +33,7 @@ public class SpeedMathActivity extends AppCompatActivity {
         } else {
             FileController fc = new FileController(getBaseContext());
             creator = fc.loadGame();
+            creator.setActivity(this);
         }
         correctTV.setText(Integer.toString(creator.getAmount()));
 

@@ -15,7 +15,7 @@ public class AllScoresActivity extends AppCompatActivity {
         TVequations = findViewById(R.id.TVequations);
         TVAttempts = findViewById(R.id.TVattempts);
         FileController fc = new FileController(getBaseContext());
-        scores = fc.loadScores();
+        scores = fc.loadScores(); // Create a Allscores object if it cant read one from file it will return a new one
         TVtotal.setText("Total Games: " + Integer.toString(scores.getAmount()));
         TVequations.setText("Total Equations: " + scores.getEquationCount());
         TVAttempts.setText("Total Tries:" + scores.getQuestionAmount());

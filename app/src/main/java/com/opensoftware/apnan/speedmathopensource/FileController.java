@@ -10,9 +10,16 @@ import java.io.ObjectOutputStream;
 public class FileController {
     private Context context;
 
+    /**
+     * @param context this is a base context that is needed for the builtin file read and write
+     */
     public FileController(Context context) {
         this.context = context;
     }
+
+    /**
+     * @param game This is the game object to be saved.
+     */
     public void saveGame(Game game) {
         try {
             FileOutputStream fos = context.openFileOutput("savedGame", Context.MODE_PRIVATE);
@@ -23,6 +30,10 @@ public class FileController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * @return Game object that was saved
+     */
     public Game loadGame() {
         Game game;
         try {
@@ -37,6 +48,10 @@ public class FileController {
         return null;
 
     }
+
+    /**
+     * @return An allscores object from file, if it cant be read it creates a new one
+     */
     public AllScores loadScores() {
         AllScores scores;
         try {
@@ -50,6 +65,10 @@ public class FileController {
         }
         return new AllScores();
     }
+
+    /**
+     * @param scores the Allscores object that is to be written to disk
+     */
     public void saveScores(AllScores scores) {
         try {
             FileOutputStream fos = context.openFileOutput("allGames", Context.MODE_PRIVATE);

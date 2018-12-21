@@ -11,9 +11,17 @@
     <ListView
         android:id="@+id/LVequations"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dip">
 
 
     </ListView>
+
+    <Button
+        android:id="@+id/Bintro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back to intro"
+        tools:text="Back to intro!!!"
+        app:layout_constraintTop_toBottomOf="@+id/LVequations"/>
 
 </android.support.constraint.ConstraintLayout>

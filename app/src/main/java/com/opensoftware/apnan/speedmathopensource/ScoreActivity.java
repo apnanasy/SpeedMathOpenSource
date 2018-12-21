@@ -3,12 +3,15 @@ package com.opensoftware.apnan.speedmathopensource;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class ScoreActivity extends AppCompatActivity {
     ListView LVequations;
+    Button Bintro;
     Score score;
 
     @Override
@@ -16,6 +19,7 @@ public class ScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
         LVequations = findViewById(R.id.LVequations);
+        Bintro = findViewById(R.id.Bintro);
         Intent intent = getIntent();
         if(intent.hasExtra("score")) {
             score = (Score)intent.getSerializableExtra("score");
@@ -27,5 +31,12 @@ public class ScoreActivity extends AppCompatActivity {
             fc.saveScores(scores);
 
         }
+        Bintro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getBaseContext(), IntroActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }
