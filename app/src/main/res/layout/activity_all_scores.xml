@@ -11,8 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tries: "
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="92dp" />
+        />
 
     <TextView
         android:id="@+id/TVequations"

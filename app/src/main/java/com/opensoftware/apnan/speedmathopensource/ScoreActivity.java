@@ -31,6 +31,11 @@ public class ScoreActivity extends AppCompatActivity {
             fc.saveScores(scores);
 
         }
+        if(intent.hasExtra("SavedScore")) {
+            score = (Score) intent.getSerializableExtra("SavedScore");
+            ArrayAdapter<ScoredEquation> arrayAdapter = new ArrayAdapter<ScoredEquation>(this,android.R.layout.simple_list_item_1,score.getEquations());
+            LVequations.setAdapter(arrayAdapter);
+        }
         Bintro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -14,6 +14,14 @@ public class AllScores implements Serializable {
     }
 
     /**
+     * @param pos the position of the score to be retrieved
+     * @return The score object contained in the arraylist
+     */
+    public Score getScore(int pos) {
+        return completed.get(pos);
+    }
+
+    /**
      * @param score A score object that is to be added to the completed arraylist
      */
     public void addScore(Score score) {
