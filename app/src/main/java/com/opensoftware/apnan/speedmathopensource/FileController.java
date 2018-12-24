@@ -49,6 +49,32 @@ public class FileController {
 
     }
 
+    public SavedGames loadGames() {
+        SavedGames games;
+        try {
+            FileInputStream fis = context.openFileInput("savedGame");
+            ObjectInputStream is = new ObjectInputStream(fis);
+            games = (SavedGames)is.readObject();
+            is.close();
+            return games;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return new SavedGames();
+
+    }
+
+    public void saveGames(SavedGames games) {
+        try {
+            FileOutputStream fos = context.openFileOutput("savedGame", Context.MODE_PRIVATE);
+            ObjectOutputStream os = new ObjectOutputStream(fos);
+            os.writeObject(games);
+            os.close();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * @return An allscores object from file, if it cant be read it creates a new one
      */

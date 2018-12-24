@@ -126,5 +126,9 @@ public class Game implements Serializable {
         }
     }
 
+    public String toString() {
+        return Integer.toString(score.getAmount()) + "/" + creator.getAmountStr();
+    }
+
 
 }

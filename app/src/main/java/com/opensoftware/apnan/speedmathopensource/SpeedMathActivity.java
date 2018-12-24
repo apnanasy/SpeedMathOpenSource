@@ -30,10 +30,12 @@ public class SpeedMathActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if(intent.hasExtra("creation")) {
             creator = new Game((GameCreation) intent.getSerializableExtra("creation"), this);
-        } else {
-            FileController fc = new FileController(getBaseContext());
-            creator = fc.loadGame();
+        } else if(intent.hasExtra("SavedGame")) {
+            creator = (Game) intent.getSerializableExtra("SavedGame");
             creator.setActivity(this);
+            //FileController fc = new FileController(getBaseContext());
+            //creator = fc.loadGame();
+            //creator.setActivity(this);
         }
         correctTV.setText(Integer.toString(creator.getAmount()));
 
@@ -53,7 +55,10 @@ public class SpeedMathActivity extends AppCompatActivity {
             @Override
            public void onClick(View v) {
                 FileController fc = new FileController(getBaseContext());
-                fc.saveGame(creator);
+                //fc.saveGame(creator);
+                SavedGames games = fc.loadGames();
+                games.addGame(creator);
+                fc.saveGames(games);
                 Intent intent = new Intent(getBaseContext(), IntroActivity.class);
                 startActivity(intent);
             }
