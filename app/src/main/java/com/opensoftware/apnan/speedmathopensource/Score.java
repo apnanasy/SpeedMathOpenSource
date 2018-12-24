@@ -88,7 +88,7 @@ public class Score implements Serializable {
     }
 
     public String toString() {
-        return "Amount of equations: " +Integer.toString(getAmount()) + "Overall Attempts: " + Integer.toString(getOverallTries());
+        return "Amount of equations: " +Integer.toString(getAmount()) + " Overall Attempts: " + Integer.toString(getOverallTries());
     }
 
 

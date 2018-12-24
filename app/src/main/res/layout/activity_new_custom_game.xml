@@ -16,7 +16,7 @@
     <EditText
         android:id="@+id/ETlow"
         android:layout_width="match_parent"
-        android:layout_height="166dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="low"
         android:inputType="number"
@@ -39,6 +39,37 @@
         android:hint="amount"
         android:inputType="number"
         app:layout_constraintTop_toBottomOf="@+id/EThigh"/>
+    <CheckBox
+        android:id="@+id/CBadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Addition"
+        android:checked="true"
+        app:layout_constraintTop_toBottomOf="@+id/ETamount" />
+
+    <CheckBox
+        android:id="@+id/CBsub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Subtraction"
+        android:checked="true"
+        app:layout_constraintTop_toBottomOf="@+id/CBadd" />
+
+    <CheckBox
+        android:id="@+id/CBdiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Division"
+        android:checked="true"
+        app:layout_constraintTop_toBottomOf="@+id/CBsub" />
+
+    <CheckBox
+        android:id="@+id/CBmul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Multiply"
+        android:checked="true"
+        app:layout_constraintTop_toBottomOf="@+id/CBdiv" />
 
     <Button
         android:id="@+id/Bcreate"
@@ -46,6 +77,8 @@
         android:layout_height="wrap_content"
         android:text="Create Game!"
         tools:text="Create Game!"
-        app:layout_constraintTop_toBottomOf="@+id/ETamount"/>
+        app:layout_constraintTop_toBottomOf="@+id/CBmul"/>
+
+
 
 </android.support.constraint.ConstraintLayout>
