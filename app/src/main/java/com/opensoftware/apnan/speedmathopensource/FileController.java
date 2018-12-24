@@ -20,34 +20,34 @@ public class FileController {
     /**
      * @param game This is the game object to be saved.
      */
-    public void saveGame(Game game) {
-        try {
-            FileOutputStream fos = context.openFileOutput("savedGame", Context.MODE_PRIVATE);
-            ObjectOutputStream os = new ObjectOutputStream(fos);
-            os.writeObject(game);
-            os.close();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
+   // public void saveGame(Game game) {
+   //     try {
+    //        FileOutputStream fos = context.openFileOutput("savedGame", Context.MODE_PRIVATE);
+   //         ObjectOutputStream os = new ObjectOutputStream(fos);
+   //         os.writeObject(game);
+   //         os.close();
+   //     } catch(Exception e) {
+   //         e.printStackTrace();
+   //     }
+   // }
 
     /**
      * @return Game object that was saved
      */
-    public Game loadGame() {
-        Game game;
-        try {
-            FileInputStream fis = context.openFileInput("savedGame");
-            ObjectInputStream is = new ObjectInputStream(fis);
-            game = (Game)is.readObject();
-            is.close();
-            return game;
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+   // public Game loadGame() {
+   //     Game game;
+   //     try {
+   //         FileInputStream fis = context.openFileInput("savedGame");
+   //         ObjectInputStream is = new ObjectInputStream(fis);
+   //         game = (Game)is.readObject();
+   //         is.close();
+   //         return game;
+    //    } catch(Exception e) {
+   //         e.printStackTrace();
+   //     }
+   //     return null;
 
-    }
+   // }
 
     public SavedGames loadGames() {
         SavedGames games;

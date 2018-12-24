@@ -13,11 +13,14 @@ public class SavedGames implements Serializable {
         SavedGames.add(game);
     }
     public Game getGame(int pos) {
-        Game game = SavedGames.get(pos);
-        SavedGames.remove(pos);
-        return game;
+        //Game game = SavedGames.get(pos);
+        //SavedGames.remove(game);
+        return SavedGames.remove(pos);
     }
     public ArrayList<Game> getSavedGames() {
         return SavedGames;
+    }
+    public int getSize() {
+        return SavedGames.size();
     }
 }
