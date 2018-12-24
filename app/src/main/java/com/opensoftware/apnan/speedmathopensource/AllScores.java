@@ -57,6 +57,9 @@ public class AllScores implements Serializable {
         return completed.size();
     }
 
+    /**
+     * @return the list of completed matches
+     */
     public ArrayList<Score> getCompleted() {
         return completed;
     }

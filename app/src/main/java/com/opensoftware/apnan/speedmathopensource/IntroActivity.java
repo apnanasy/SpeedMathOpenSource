@@ -19,7 +19,7 @@ public class IntroActivity extends AppCompatActivity {
         Bresume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), SpeedMathActivity.class);
+                Intent intent = new Intent(getBaseContext(), SavedGamesActivity.class);
                 startActivity(intent);
             }
         });

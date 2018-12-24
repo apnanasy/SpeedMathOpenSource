@@ -27,7 +27,8 @@
                 android:value="com.opensoftware.apnan.speedmathopensource.IntroActivity" />
         </activity>
         <activity android:name=".ScoreActivity" />
-        <activity android:name=".AllScoresActivity"></activity>
+        <activity android:name=".AllScoresActivity" />
+        <activity android:name=".SavedGamesActivity"></activity>
     </application>
 
 </manifest>
