@@ -37,7 +37,7 @@ public Equation()
                     good = false;
                 }
                 break;
-            case 4:
+            case 3:
                 if(left % right != 0) // Makes sure that you will not division with an answer with a decimal point
                 {
                     good = false;
@@ -84,9 +84,9 @@ public Equation()
                 break;
             case 2: built.append(" - ");
                 break;
-            case 3: built.append(" x ");
+            case 3: built.append(" / ");
                 break;
-            case 4: built.append(" / ");
+            case 4: built.append(" * ");
                 break;
 
         }

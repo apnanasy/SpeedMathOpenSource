@@ -47,7 +47,7 @@ public class Game implements Serializable {
         int ctr = 0;
         while(ctr < creator.getAmount()) {
             equations.add(ctr,new Equation());
-            equations.get(ctr).setOperator(generateNum(4));
+            equations.get(ctr).setOperator(generateOperator(4));
             do {
                 equations.get(ctr).setLeft(generateRange());
                 equations.get(ctr).setRight(generateRange());
@@ -80,10 +80,26 @@ public class Game implements Serializable {
      * @param max the highest number that should be returned
      * @return a random num that is no bigger than max
      */
-    private int generateNum(int max)
+    private int generateOperator(int max)
     {
         Random rand = new Random();
-        return rand.nextInt(max) + 1;
+        boolean goodOperator = false;
+        int operator = -1;
+        while(!goodOperator) {
+            operator = rand.nextInt(max) + 1;
+            switch(operator ) {
+                case 1: if(creator.isAdd()){goodOperator = true;}
+                break;
+                case 2: if(creator.isSub()) {goodOperator = true;}
+                break;
+                case 3: if(creator.isDiv()) {goodOperator = true;}
+                break;
+                case 4: if(creator.isMul()) {goodOperator = true;}
+                break;
+            }
+        }
+
+        return operator;
     }
 
     /**

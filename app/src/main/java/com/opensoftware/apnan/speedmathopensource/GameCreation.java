@@ -11,19 +11,27 @@ import java.io.Serializable;
 public class GameCreation implements Serializable {
     private int low, high, amount;
 
+    boolean add,sub,div,mul;
+
     /**
      * @param low the low range
      * @param high the high range
      * @param amount the amount of questions
      * @return The string error, null if correct
      */
-    public String checkGame(int low, int high, int amount) {
+    public String checkGame(int low, int high, int amount, boolean add, boolean sub, boolean div, boolean mul) {
         if(low > high){
             return "Low must be lower than high";
+        } else if(!add && !sub && !div && !mul){
+            return "One of the equation types must be checked";
         } else {
             this.low = low;
             this.high = high;
             this.amount = amount;
+            this.add = add;
+            this.sub = sub;
+            this.div = div;
+            this.mul = mul;
             return null;
         }
     }
@@ -33,6 +41,22 @@ public class GameCreation implements Serializable {
      */
     public String getHighStr() {
         return Integer.toString(high);
+    }
+
+    public boolean isAdd() {
+        return add;
+    }
+
+    public boolean isSub() {
+        return sub;
+    }
+
+    public boolean isDiv() {
+        return div;
+    }
+
+    public boolean isMul() {
+        return mul;
     }
 
     /**
@@ -88,6 +112,10 @@ public class GameCreation implements Serializable {
         low = 1; //Default values
         high = 12;//Default Values
         amount = 10;//default values
+        add = true;
+        sub = true;
+        mul = true;
+        div = true;
     }
 
 
