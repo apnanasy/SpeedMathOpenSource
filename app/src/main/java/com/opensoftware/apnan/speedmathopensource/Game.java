@@ -142,6 +142,19 @@ public class Game implements Serializable {
         }
     }
 
+    /**
+     * @param answer to get the hint on
+     * @return String mentioning wether it is high or low
+     */
+    public String getHint(int answer)
+    {
+        if(creator.isHint()) {
+            return score.checkWrong(answer);
+        } else {
+            return null;
+        }
+    }
+
     public String toString() {
         return Integer.toString(score.getAmount()) + "/" + creator.getAmountStr();
     }

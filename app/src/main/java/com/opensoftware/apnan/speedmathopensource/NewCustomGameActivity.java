@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class NewCustomGameActivity extends AppCompatActivity {
     private Button createB;
     private EditText lowET, highET, amountET;
-    private CheckBox CBadd, CBsub, CBdiv,CBmul;
+    private CheckBox CBadd, CBsub, CBdiv,CBmul, CBhint;
     private GameCreation creator;
 
     @Override
@@ -28,6 +28,7 @@ public class NewCustomGameActivity extends AppCompatActivity {
         CBsub = findViewById(R.id.CBsub);
         CBdiv = findViewById(R.id.CBdiv);
         CBmul = findViewById(R.id.CBmul);
+        CBhint = findViewById(R.id.CBhint);
         lowET.setText(creator.getLowStr());
         highET.setText(creator.getHighStr());
         amountET.setText(creator.getAmountStr());
@@ -43,7 +44,7 @@ public class NewCustomGameActivity extends AppCompatActivity {
         int low = Integer.parseInt(lowET.getText().toString());
         int high = Integer.parseInt(highET.getText().toString());
         int amount = Integer.parseInt(amountET.getText().toString());
-        String s = creator.checkGame(low,high,amount,CBadd.isChecked(),CBsub.isChecked(),CBdiv.isChecked(),CBmul.isChecked());
+        String s = creator.checkGame(low,high,amount,CBadd.isChecked(),CBsub.isChecked(),CBdiv.isChecked(),CBmul.isChecked(),CBhint.isChecked());
         if(s == null) {
             Intent intent = new Intent(getBaseContext(), SpeedMathActivity.class);
             intent.putExtra("creation",creator);

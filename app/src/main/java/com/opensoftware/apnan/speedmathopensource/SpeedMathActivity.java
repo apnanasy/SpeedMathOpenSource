@@ -9,6 +9,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class SpeedMathActivity extends AppCompatActivity {
@@ -69,13 +70,18 @@ public class SpeedMathActivity extends AppCompatActivity {
 
     private void checkAnswer()
     {
-        if(creator.checkEquation(Integer.parseInt(answerET.getText().toString())))
+        int answer = Integer.parseInt(answerET.getText().toString());
+        if(creator.checkEquation(answer))
         {
             //correctTV.setText(Integer.toString(creator.getAmount()));
             equationTV.setText(creator.getEquation());
             answerET.setText("");
         } else {
             //correctTV.setText(Integer.toString(creator.getAmount()));
+            String hint = creator.getHint(answer);
+            if(hint != null) {
+                Toast.makeText(getBaseContext(),hint, Toast.LENGTH_LONG).show();
+            }
         }
         correctTV.setText(Integer.toString(creator.getAmount()));
     }

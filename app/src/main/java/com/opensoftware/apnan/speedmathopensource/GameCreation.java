@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class GameCreation implements Serializable {
     private int low, high, amount;
 
-    boolean add,sub,div,mul;
+    boolean add,sub,div,mul,hint;
 
     /**
      * @param low the low range
@@ -19,7 +19,7 @@ public class GameCreation implements Serializable {
      * @param amount the amount of questions
      * @return The string error, null if correct
      */
-    public String checkGame(int low, int high, int amount, boolean add, boolean sub, boolean div, boolean mul) {
+    public String checkGame(int low, int high, int amount, boolean add, boolean sub, boolean div, boolean mul, boolean hint) {
         if(low > high){
             return "Low must be lower than high";
         } else if(!add && !sub && !div && !mul){
@@ -32,6 +32,7 @@ public class GameCreation implements Serializable {
             this.sub = sub;
             this.div = div;
             this.mul = mul;
+            this.hint = hint;
             return null;
         }
     }
@@ -46,6 +47,8 @@ public class GameCreation implements Serializable {
     public boolean isAdd() {
         return add;
     }
+
+    public boolean isHint() { return hint;}
 
     public boolean isSub() {
         return sub;

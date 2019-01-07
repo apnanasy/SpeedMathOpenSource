@@ -55,9 +55,9 @@ public class Score implements Serializable {
 
     /**
      * @param answer the answer to check
-     * @return boolean indicating if it is corect
+     * @return boolean indicating if it is corect,
      */
-    public boolean attempt(int answer)
+    public Boolean attempt(int answer)
     {
         tries++;
         overallTries++;
@@ -69,6 +69,20 @@ public class Score implements Serializable {
         } else {
             return false;
         }
+    }
+    /**
+     * @param answer answer to check
+     * @return string indicating wether it is high or low
+     */
+    public String checkWrong(int answer)
+    {
+        String hint;
+        if(answer < equate.getAnswer()) {
+            hint = "Low";
+        } else {
+            hint = "High";
+        }
+        return hint;
     }
 
     /**
