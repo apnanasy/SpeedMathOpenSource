@@ -1,6 +1,8 @@
 package com.opensoftware.apnan.speedmathopensource;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -13,11 +15,33 @@ import android.widget.Toast;
 
 
 public class SpeedMathActivity extends AppCompatActivity {
-    private TextView equationTV, correctTV,wrongTV;
+    private TextView equationTV, correctTV,wrongTV, timeTV;
     private Button Bsave;
     private EditText answerET;
     private Game creator;
     private int tries = 0;
+    private Handler mHandler = new Handler();
+    private final long mStartTime = System.currentTimeMillis();
+
+
+   private Runnable mUpdateTimeTask = new Runnable()
+    {
+        public void run()
+        {
+            final long start = mStartTime;
+            long millis = System.currentTimeMillis() - start;
+            int seconds = (int) (millis / 1000);
+            seconds = seconds % 60;
+
+            timeTV.setText(Integer.toString(seconds));
+
+            mHandler.postDelayed(this, 100);
+
+
+        }
+    };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +52,7 @@ public class SpeedMathActivity extends AppCompatActivity {
         wrongTV = findViewById(R.id.wrongText);
         answerET = findViewById(R.id.answerEdit);
         Bsave = findViewById(R.id.Bsave);
+        timeTV = findViewById(R.id.timeText);
         Intent intent = getIntent();
         if(intent.hasExtra("creation")) {
             creator = new Game((GameCreation) intent.getSerializableExtra("creation"), this);
@@ -65,8 +90,15 @@ public class SpeedMathActivity extends AppCompatActivity {
             }
         });
         equationTV.setText(creator.getEquation());
+        mHandler.removeCallbacks(mUpdateTimeTask);
+        mHandler.postDelayed(mUpdateTimeTask, 1);
+
 
     }
+
+
+
+
 
     private void checkAnswer()
     {
