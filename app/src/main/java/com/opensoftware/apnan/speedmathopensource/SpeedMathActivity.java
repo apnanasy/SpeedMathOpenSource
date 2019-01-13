@@ -2,7 +2,6 @@ package com.opensoftware.apnan.speedmathopensource;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -21,7 +20,7 @@ public class SpeedMathActivity extends AppCompatActivity {
     private Game creator;
     private int tries = 0;
     private Handler mHandler = new Handler();
-    private final long mStartTime = System.currentTimeMillis();
+    private long mStartTime = System.currentTimeMillis();
 
 
    private Runnable mUpdateTimeTask = new Runnable()
@@ -31,7 +30,7 @@ public class SpeedMathActivity extends AppCompatActivity {
             final long start = mStartTime;
             long millis = System.currentTimeMillis() - start;
             int seconds = (int) (millis / 1000);
-            seconds = seconds % 60;
+            //seconds = seconds % 60;
 
             timeTV.setText(Integer.toString(seconds));
 
@@ -103,9 +102,13 @@ public class SpeedMathActivity extends AppCompatActivity {
     private void checkAnswer()
     {
         int answer = Integer.parseInt(answerET.getText().toString());
-        if(creator.checkEquation(answer))
+        int time = Integer.parseInt(timeTV.getText().toString());
+        if(creator.checkEquation(answer, time))
         {
             //correctTV.setText(Integer.toString(creator.getAmount()));
+            mStartTime = System.currentTimeMillis();
+            mHandler.removeCallbacks(mUpdateTimeTask);
+            mHandler.postDelayed(mUpdateTimeTask, 1);
             equationTV.setText(creator.getEquation());
             answerET.setText("");
         } else {

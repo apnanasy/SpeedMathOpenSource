@@ -123,9 +123,9 @@ public class Game implements Serializable {
      * @param answer This is the answer that you want checked
      * @return Boolean representing wether the answer was correct or not
      */
-    public boolean checkEquation(int answer)
+    public boolean checkEquation(int answer, int time)
     {
-        if(score.attempt(answer))
+        if(score.attempt(answer, time))
         {
             if(equations.isEmpty()) {
                 Intent intent = new Intent(activity.getBaseContext(),ScoreActivity.class);

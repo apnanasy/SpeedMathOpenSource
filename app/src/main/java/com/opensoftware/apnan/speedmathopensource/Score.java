@@ -57,13 +57,13 @@ public class Score implements Serializable {
      * @param answer the answer to check
      * @return boolean indicating if it is corect,
      */
-    public Boolean attempt(int answer)
+    public Boolean attempt(int answer, int time)
     {
         tries++;
         overallTries++;
         if(answer == equate.getAnswer())
         {
-            ScoredEquation done = new ScoredEquation(equate,tries);
+            ScoredEquation done = new ScoredEquation(equate,tries, time);
             equations.add(done);
             return true;
         } else {
