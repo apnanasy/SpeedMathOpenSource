@@ -24,7 +24,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answerEdit"/>
+        app:layout_constraintBottom_toTopOf="@+id/equationText"/>
 
     <EditText
         android:id="@+id/answerEdit"

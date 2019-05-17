@@ -64,9 +64,9 @@ public Equation()
                 break;
             case 2: answer = left - right;
                 break;
-            case 3: answer = left * right;
+            case 3: answer = left / right;
                 break;
-            case 4: answer = left / right;
+            case 4: answer = left * right;
                 break;
         }
     }
