@@ -8,13 +8,6 @@
 
 
 
-    <ListView
-        android:id="@+id/LVequations"
-        android:layout_width="match_parent"
-        android:layout_height="0dip">
-
-
-    </ListView>
 
     <Button
         android:id="@+id/Bintro"
@@ -22,6 +15,20 @@
         android:layout_height="wrap_content"
         android:text="Back to intro"
         tools:text="Back to intro!!!"
-        app:layout_constraintTop_toBottomOf="@+id/LVequations"/>
+
+    />
+
+    <ListView
+        android:id="@+id/LVequations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/Bintro">
+
+
+    </ListView>
+
+
 
 </android.support.constraint.ConstraintLayout>
