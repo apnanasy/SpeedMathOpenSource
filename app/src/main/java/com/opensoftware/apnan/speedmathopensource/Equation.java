@@ -38,7 +38,7 @@ public Equation()
                 }
                 break;
             case 3:
-                if(left % right != 0) // Makes sure that you will not division with an answer with a decimal point
+                if(left % right != 0 || left == right || right == 1) // Makes sure that you will not division with an answer with a decimal point or a number by itself or one because those are 2 eaasy!
                 {
                     good = false;
                 }
