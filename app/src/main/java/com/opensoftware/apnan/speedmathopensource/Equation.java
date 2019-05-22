@@ -44,20 +44,23 @@ public Equation()
                 }
                 break;
         }
-        if(good) { // If equation is good create the answer and the string for it
-            createEquationString();
-            createAnswer();
-            return good;
-        } else {
-            return good;
-        }
+       return good;
+    }
+    public int getOperator() {
+        return operator;
+    }
+    public int getLeft() {
+        return left;
+    }
+    public int getRight() {
+        return right;
     }
 
     /**
      * This function translates the int in answer to a certain operation and then solves the equation
      * and assigns the answer to the answer field.
      */
-    private void createAnswer()
+    public void createAnswer()
     {
         switch(operator) {
             case 1: answer = left + right;
@@ -75,7 +78,7 @@ public Equation()
      * This function creates a displayable string without the answer for the user, and then assigns that
      * string to the equation field.
      */
-    private void createEquationString()
+    public void createEquationString()
     {
         StringBuilder built = new StringBuilder();
         built.append(left);

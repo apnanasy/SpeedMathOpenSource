@@ -40,6 +40,29 @@ public class Game implements Serializable {
     }
 
     /**
+     *
+     * @param e The equation that is to be checked for duplicity
+     * @return true if it is not a duplicate
+     */
+    private boolean checkDuplicate(Equation e)
+    {
+        int ctr = 0;//Used to track how many of this equation are in the arraylist
+        for(int i = 0; i < equations.size(); i++){
+            if(e.getOperator() == equations.get(i).getOperator() //This checks the operator and left and right terms if they are all the same it increments the counter
+                    && e.getLeft() == equations.get(i).getLeft()
+                    && e.getRight() == equations.get(i).getRight()){
+                ctr++;
+            }
+        }
+        if(ctr > 1) { //Ctr can and should be 1 because it will find the original equation
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
+    /**
      * This method creates all the equations and adds them to the arraylist
      */
     private void createEquation()
@@ -52,7 +75,11 @@ public class Game implements Serializable {
                 equations.get(ctr).setLeft(generateRange());
                 equations.get(ctr).setRight(generateRange());
 
-            } while (!equations.get(ctr).checkPossibleEquation());
+            } while (!equations.get(ctr).checkPossibleEquation()
+                    || !checkDuplicate(equations.get(ctr)));
+
+                equations.get(ctr).createEquationString();
+                equations.get(ctr).createAnswer();
             ctr++;
         }
 
