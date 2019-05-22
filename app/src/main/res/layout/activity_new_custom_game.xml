@@ -79,13 +79,21 @@
         android:checked="true"
         app:layout_constraintTop_toBottomOf="@+id/CBmul" />
 
+    <CheckBox
+        android:id="@+id/CBwrong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Allow Wrong"
+        android:checked="false"
+        app:layout_constraintTop_toBottomOf="@+id/CBhint" />
+
     <Button
         android:id="@+id/Bcreate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Create Game!"
         tools:text="Create Game!"
-        app:layout_constraintTop_toBottomOf="@+id/CBhint"/>
+        app:layout_constraintTop_toBottomOf="@+id/CBwrong"/>
 
 
 

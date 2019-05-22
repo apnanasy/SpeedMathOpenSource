@@ -11,6 +11,7 @@ public class ScoredEquation implements Serializable {
     private Equation equation;
     private int tries;
     private int time;
+    private int answered;
 
     /**
      * @param eq the equation that has been processed
@@ -21,11 +22,21 @@ public class ScoredEquation implements Serializable {
         this.time = time;
         equation = eq;
     }
+    public ScoredEquation(Equation eq, int tries, int time, int ans) {
+        this.tries = 0; // setting tries to 0 so that tostring knows to choose the right string type
+        this.time = time;
+        equation = eq;
+        answered = ans;
+    }
 
     /**
      * @return String that contains the original equation string and the amount of tries to answer it
      */
     public String toString() {
-        return equation.toString() + " Attempts: " + Integer.toString(tries) + " Time: " + Integer.toString(time);
+        if(tries == 0) {
+            return equation.toString() + " Answered: " + Integer.toString(answered) + " Time: " + Integer.toString(time);
+        } else {
+            return equation.toString() + " Attempts: " + Integer.toString(tries) + " Time: " + Integer.toString(time);
+        }
     }
 }

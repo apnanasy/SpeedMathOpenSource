@@ -61,7 +61,11 @@ public class Score implements Serializable {
     {
         tries++;
         overallTries++;
-        if(answer == equate.getAnswer())
+        if(details.isWrong() == true) {
+            ScoredEquation done = new ScoredEquation(equate, tries, time, answer);
+            equations.add(done);
+            return true;
+        }else if(answer == equate.getAnswer())
         {
             ScoredEquation done = new ScoredEquation(equate,tries, time);
             equations.add(done);
