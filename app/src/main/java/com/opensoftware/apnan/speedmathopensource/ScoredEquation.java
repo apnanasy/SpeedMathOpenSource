@@ -12,6 +12,7 @@ public class ScoredEquation implements Serializable {
     private int tries;
     private int time;
     private int answered;
+    private int score = 100;
 
     /**
      * @param eq the equation that has been processed
@@ -21,12 +22,21 @@ public class ScoredEquation implements Serializable {
         this.tries = tries;
         this.time = time;
         equation = eq;
+        score = score - time - (tries * 10); // Numeric score calculator for when wrong answers are not accepted
+        if(score < 0) { //Make sure that no score is below 0
+            score = 0;
+        }
     }
     public ScoredEquation(Equation eq, int tries, int time, int ans) {
         this.tries = 0; // setting tries to 0 so that tostring knows to choose the right string type
         this.time = time;
         equation = eq;
         answered = ans;
+        if(answered != eq.getAnswer()) {
+            score = 0;
+        } else {
+            score = score - time;
+        }
     }
 
     /**
@@ -34,9 +44,9 @@ public class ScoredEquation implements Serializable {
      */
     public String toString() {
         if(tries == 0) {
-            return equation.toString() + " Answered: " + Integer.toString(answered) + " Time: " + Integer.toString(time);
+            return equation.toString() + " Answered: " + Integer.toString(answered) + " Time: " + Integer.toString(time) + " Score: " + Integer.toString(score);
         } else {
-            return equation.toString() + " Attempts: " + Integer.toString(tries) + " Time: " + Integer.toString(time);
+            return equation.toString() + " Attempts: " + Integer.toString(tries) + " Time: " + Integer.toString(time) + " Score: " + Integer.toString(score);
         }
     }
 }
