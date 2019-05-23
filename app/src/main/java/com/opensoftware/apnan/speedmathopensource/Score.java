@@ -12,6 +12,7 @@ public class Score implements Serializable {
     private ArrayList<ScoredEquation> equations;// All the completed equations
     private int tries;//Attempts on this equation
     private int overallTries;// attempts for the entire game
+    private int totalScore;
 
     /**
      * @param details details on how to score the game
@@ -21,6 +22,7 @@ public class Score implements Serializable {
         tries = 0;
         equations = new ArrayList<ScoredEquation>();
         this.details = details;
+        totalScore = 0;
     }
 
     /**
@@ -29,6 +31,7 @@ public class Score implements Serializable {
     public int getOverallTries() {
         return overallTries;
     }
+    public int getTotalScore() { return totalScore;}
 
     /**
      * @return The arraylist of scoreed equations
@@ -63,11 +66,13 @@ public class Score implements Serializable {
         overallTries++;
         if(details.isWrong() == true) {
             ScoredEquation done = new ScoredEquation(equate, tries, time, answer);
+            totalScore += done.getScore();
             equations.add(done);
             return true;
         }else if(answer == equate.getAnswer())
         {
             ScoredEquation done = new ScoredEquation(equate,tries, time);
+            totalScore += done.getScore();
             equations.add(done);
             return true;
         } else {
@@ -106,7 +111,7 @@ public class Score implements Serializable {
     }
 
     public String toString() {
-        return "Amount of equations: " +Integer.toString(getAmount()) + " Overall Attempts: " + Integer.toString(getOverallTries());
+        return "Amount of equations: " +Integer.toString(getAmount()) + " Overall Attempts: " + Integer.toString(getOverallTries()) + " Total Score: " + Integer.toString(totalScore);
     }
 
 

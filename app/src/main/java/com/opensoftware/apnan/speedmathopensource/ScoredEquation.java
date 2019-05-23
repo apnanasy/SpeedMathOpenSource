@@ -38,6 +38,9 @@ public class ScoredEquation implements Serializable {
             score = score - time;
         }
     }
+    public int getScore() {
+        return score;
+    }
 
     /**
      * @return String that contains the original equation string and the amount of tries to answer it
