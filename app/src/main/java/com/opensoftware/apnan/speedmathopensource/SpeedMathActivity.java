@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class SpeedMathActivity extends AppCompatActivity {
     private TextView equationTV, correctTV,wrongTV, timeTV;
-    private Button Bsave;
+    private Button Bsave, Bforfeit;
     private EditText answerET;
     private Game creator;
     private int tries = 0;
@@ -51,6 +51,7 @@ public class SpeedMathActivity extends AppCompatActivity {
         wrongTV = findViewById(R.id.wrongText);
         answerET = findViewById(R.id.answerEdit);
         Bsave = findViewById(R.id.Bsave);
+        Bforfeit = findViewById(R.id.Bforfeit);
         timeTV = findViewById(R.id.timeText);
         Intent intent = getIntent();
         if(intent.hasExtra("creation")) {
@@ -70,7 +71,12 @@ public class SpeedMathActivity extends AppCompatActivity {
                 boolean handled = false;
                 if (actionId == EditorInfo.IME_ACTION_DONE ||
                         (event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
-                   checkAnswer();
+                   //checkAnswer();
+                    if(checkAnswer1()) {
+                        updateEquation();
+                    } else {
+                        updateHint();
+                    }
                     handled = true;
                 }
                 return handled;
@@ -95,7 +101,31 @@ public class SpeedMathActivity extends AppCompatActivity {
 
     }
 
+    private void updateEquation() {
+        mStartTime = System.currentTimeMillis();
+        mHandler.removeCallbacks(mUpdateTimeTask);
+        mHandler.postDelayed(mUpdateTimeTask, 1);
+        equationTV.setText(creator.getEquation());
+        answerET.setText("");
+        correctTV.setText(Integer.toString(creator.getAmount()));
+    }
+    private void updateHint() {
+        int answer = Integer.parseInt(answerET.getText().toString());
+        String hint = creator.getHint(answer);
+        if(hint != null) {
+            Toast.makeText(getBaseContext(),hint, Toast.LENGTH_LONG).show();
+        }
+    }
 
+    private boolean checkAnswer1() {
+        int answer = Integer.parseInt(answerET.getText().toString());
+        int time = Integer.parseInt(timeTV.getText().toString());
+        if(creator.checkEquation(answer, time)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 

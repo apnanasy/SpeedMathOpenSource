@@ -70,7 +70,16 @@
         android:layout_height="wrap_content"
         android:text="Save"
         tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="231dp" />
+        tools:layout_editor_absoluteY="231dp"
+        app:layout_constraintTop_toBottomOf="@+id/timeText"/>
+    <Button
+        android:id="@+id/Bforfeit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forfeit Save"
+        tools:layout_editor_absoluteX="279dp"
+        tools:layout_editor_absoluteY="231dp"
+        app:layout_constraintTop_toBottomOf="@+id/Bsave"/>
 
 
 </android.support.constraint.ConstraintLayout>
