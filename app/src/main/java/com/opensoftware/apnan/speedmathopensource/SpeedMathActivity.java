@@ -85,13 +85,24 @@ public class SpeedMathActivity extends AppCompatActivity {
         Bsave.setOnClickListener(new View.OnClickListener() {
             @Override
            public void onClick(View v) {
-                FileController fc = new FileController(getBaseContext());
+                if(checkAnswer1()) {
+                    FileController fc = new FileController(getBaseContext());
+                    //fc.saveGame(creator);
+                    SavedGames games = fc.loadGames();
+                    games.addGame(creator);
+                    fc.saveGames(games);
+                    Intent intent = new Intent(getBaseContext(), IntroActivity.class);
+                    startActivity(intent);
+                } else {
+                    updateHint();
+                }
+                //FileController fc = new FileController(getBaseContext());
                 //fc.saveGame(creator);
-                SavedGames games = fc.loadGames();
-                games.addGame(creator);
-                fc.saveGames(games);
-                Intent intent = new Intent(getBaseContext(), IntroActivity.class);
-                startActivity(intent);
+               // SavedGames games = fc.loadGames();
+               // games.addGame(creator);
+               // fc.saveGames(games);
+               // Intent intent = new Intent(getBaseContext(), IntroActivity.class);
+               // startActivity(intent);
             }
         });
         equationTV.setText(creator.getEquation());
@@ -128,7 +139,7 @@ public class SpeedMathActivity extends AppCompatActivity {
     }
 
 
-
+/** old check answer
     private void checkAnswer()
     {
         int answer = Integer.parseInt(answerET.getText().toString());
@@ -150,6 +161,7 @@ public class SpeedMathActivity extends AppCompatActivity {
         }
         correctTV.setText(Integer.toString(creator.getAmount()));
     }
+ **/
 
 
 }
