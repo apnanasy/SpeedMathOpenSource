@@ -55,6 +55,11 @@ public class Score implements Serializable {
         equate = e;
         tries = 0;
     }
+    public void quit(int time, int answer) {
+        ScoredEquation done = new ScoredEquation (equate, tries, time, answer);
+        totalScore += done.getScore();
+        equations.add(done);
+    }
 
     /**
      * @param answer the answer to check

@@ -85,7 +85,9 @@ public class SpeedMathActivity extends AppCompatActivity {
         Bforfeit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                creator.exit();
+                int answer = Integer.parseInt(answerET.getText().toString());
+                int time = Integer.parseInt(timeTV.getText().toString());
+                creator.exit(answer,time);
                 FileController fc = new FileController(getBaseContext());
                 //fc.saveGame(creator);
                 SavedGames games = fc.loadGames();

@@ -144,7 +144,8 @@ public class Game implements Serializable {
     {
         return Integer.toString(score.getTries());
     }
-    public void exit() {
+    public void exit(int answer, int time) {
+        score.quit(time, answer);
         score.addEquation(equations.get(0));
         equations.remove(0);
     }
