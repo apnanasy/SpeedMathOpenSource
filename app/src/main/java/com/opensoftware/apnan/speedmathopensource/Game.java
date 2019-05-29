@@ -144,6 +144,10 @@ public class Game implements Serializable {
     {
         return Integer.toString(score.getTries());
     }
+    public void exit() {
+        score.addEquation(equations.get(0));
+        equations.remove(0);
+    }
 
     /**
      * if answer is correct and game doesnt have anymore equations this creates an intent and sends the score object to the next activity

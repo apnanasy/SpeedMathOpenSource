@@ -82,6 +82,19 @@ public class SpeedMathActivity extends AppCompatActivity {
                 return handled;
             }
         });
+        Bforfeit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                creator.exit();
+                FileController fc = new FileController(getBaseContext());
+                //fc.saveGame(creator);
+                SavedGames games = fc.loadGames();
+                games.addGame(creator);
+                fc.saveGames(games);
+                Intent intent = new Intent(getBaseContext(), IntroActivity.class);
+                startActivity(intent);
+            }
+        });
         Bsave.setOnClickListener(new View.OnClickListener() {
             @Override
            public void onClick(View v) {
